@@ -5,16 +5,16 @@ feature 'Testing infrastructure' do
   end
 end
 
-feature 'Wishes happy birthday' do
-  scenario 'when given a name' do
-    visit('/')
-    fill_in :name, with: 'Aga'
-    select '15', from: 'day'
-    select 'November', from: 'month'
-    click_button 'Go!'
-    expect(page).to have_content 'Happy birthday, Aga!'
-  end
-end
+# feature 'Wishes happy birthday' do
+#   scenario 'when given a name' do
+#     visit('/')
+#     fill_in :name, with: 'Aga'
+#     select '15', from: 'day'
+#     select 'November', from: 'month'
+#     click_button 'Go!'
+#     expect(page).to have_content 'Happy birthday, Aga!'
+#   end
+# end
 
   feature 'Counts days until birthday' do
     scenario 'when given a name and date' do
