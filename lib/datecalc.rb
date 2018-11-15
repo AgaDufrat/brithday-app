@@ -11,15 +11,17 @@ class Datecalc
   end
 
   def day_of_the_year
-    @birthday = Date.new(@today.year,@month,@day).yday.to_i
+    @birthday = Date.new(@today.year,@month.to_i,@day.to_i).yday
   end
 
   def days_until_birthday
+    day_of_the_year
     return @birthday - @today.yday if @today.yday < @birthday
     DAYS_IN_YEAR + (@birthday - @today.yday)
   end
 
   def birthday_today?
+    day_of_the_year
     @today.yday == @birthday
   end
 

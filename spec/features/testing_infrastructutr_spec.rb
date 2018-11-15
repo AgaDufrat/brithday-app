@@ -16,13 +16,13 @@ feature 'Wishes happy birthday' do
   end
 end
 
-# feature 'Counts days until birthday' do
-#   scenario 'when given a name and date' do
-#     visit('/')
-#     fill_in :name, with: 'Aga'
-#     select '15', from: 'day'
-#     select 'November', from: 'month'
-#     click_button 'Go!'
-#     expect(page).to have_content 'Your birthday will be in 2 days, Aga!'
-#   end
-# end
+  feature 'Counts days until birthday' do
+    scenario 'when given a name and date' do
+      visit('/')
+      fill_in :name, with: 'Aga'
+      select '17', from: 'day'
+      select 'November', from: 'month'
+      click_button 'Go!'
+      expect(page).to have_content 'Your birthday will be in 2 days, Aga!'
+    end
+  end

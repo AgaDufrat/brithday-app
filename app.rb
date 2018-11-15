@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/person'
+require './lib/datecalc'
 
 class Greeter < Sinatra::Base
 
@@ -9,7 +10,12 @@ class Greeter < Sinatra::Base
 
   post '/details' do
     $person = Person.new(params[:name],params[:day],params[:month])
-    redirect '/happybirthday'
+    $datecalc = Datecalc.new($person.day,$person.month)
+    if $datecalc.birthday_today?
+      redirect '/happybirthday'
+    else
+      redirect '/birthdaycounter'
+    end
   end
 
   get '/happybirthday' do
@@ -17,8 +23,9 @@ class Greeter < Sinatra::Base
     erb(:happybirthday)
   end
 
-  post '/birthdaycounter' do
-    
+  get '/birthdaycounter' do
+    @name = $person.name
+    @days_until_birthday = $datecalc.days_until_birthday
     erb(:birthdaycounter)
   end
 
