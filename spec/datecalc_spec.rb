@@ -1,12 +1,11 @@
 require 'datecalc'
 
 describe Datecalc do
-  let(:birthday) { described_class.new(5, 1)}
-  let(:date_after_birthday) { described_class.new(10, 1)}
-  let(:date_before_birthday) { described_class.new(1, 1)}
+  let(:birthday) { described_class.new(5, 1, today)}
   let(:today) { Date.new(2018,01,01) }
-  let(:today_birthday) { Date.new(2018,01,05) }
 
+  let(:birthday2) { described_class.new(5, 1, today_after_birthday)}
+  let(:today_after_birthday) { Date.new(2018,01,06) }
 
   context "#day_of_the_year" do
     it 'returns the day of the year' do
@@ -14,15 +13,20 @@ describe Datecalc do
     end
   end
 
-  # context "#days_till_birthday" do
-  #   it 'calculates numer of days until birthday' do
-  #     expect(date.days_till_birthday).to eq()
-  #   end
-  # end
-  #
-  # context "#birthday_today?" do
-  #   it 'check if birthday is today' do
-  #     expect(calc.birthday_today?).to eq(true)
-  #   end
-  # end
+  context "#days_until_birthday" do
+    context "when birthday is this year" do
+      it 'calculates numer of days until birthday' do
+        birthday.day_of_the_year
+        expect(birthday.days_until_birthday).to eq(4)
+      end
+    end
+
+    context "when birthday is next year" do
+      it 'calculates number of days until birthday' do
+        birthday2.day_of_the_year
+        expect(birthday2.days_until_birthday).to eq(364)
+      end
+    end
+  end
+
 end

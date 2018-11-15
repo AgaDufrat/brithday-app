@@ -18,7 +18,7 @@ class Greeter < Sinatra::Base
   end
 
   post '/birthdaycounter' do
-
+    
     erb(:birthdaycounter)
   end
 
