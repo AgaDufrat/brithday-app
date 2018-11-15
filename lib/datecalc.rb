@@ -19,4 +19,8 @@ class Datecalc
     DAYS_IN_YEAR + (@birthday - @today.yday)
   end
 
+  def birthday_today?
+    @today.yday == @birthday
+  end
+
 end
