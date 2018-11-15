@@ -8,12 +8,8 @@ class Datecalc
     @today = Date.today
   end
 
-  def convert_to_date
-    @birthday = Date.new(@today.year,@month,@day)
+  def day_of_the_year
+    @birthday = Date.new(@today.year,@month,@day).yday
   end
-
-  # def day_of_the_year
-  #   .yday
-  # end
 
 end
