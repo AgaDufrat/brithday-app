@@ -8,8 +8,7 @@ class Greeter < Sinatra::Base
   end
 
   post '/details' do
-    $person = Person.new(params[:name])
-    erb(:happybirthday)
+    $person = Person.new(params[:name],params[:day],params[:month])
     redirect '/happybirthday'
   end
 
@@ -19,12 +18,7 @@ class Greeter < Sinatra::Base
   end
 
   post '/birthdaycounter' do
-    today = Date.today
-    @name = params[:name]
-    @day = params[:day]
-    @month = params[:month]
-    birthday = DateTime.new(today.year,@month,@day) if @month > today.month
-    @days_until_birtday = birthday - today
+
     erb(:birthdaycounter)
   end
 
